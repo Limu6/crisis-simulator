@@ -480,19 +480,37 @@ function extractJSON(text) {
 // GENERIC AI CALL
 // ------------------------------------------------------
 async function callAI(prompt) {
-    const response = await fetch(GROQ_API_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + GROQ_API_KEY
-        },
-        body: JSON.stringify({
-            model: GROQ_MODEL,
-            messages: [{ role: "user", content: prompt }],
-            temperature: 0.6
-        })
-    });
+    for (let attempt = 0; attempt < 3; attempt++) {
+        const response = await fetch(GROQ_API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + GROQ_API_KEY
+            },
+            body: JSON.stringify({
+                model: GROQ_MODEL,
+                messages: [{ role: "user", content: prompt }],
+                temperature: 0.6
+            })
+        });
 
-    const data = await response.json();
-    return data.choices?.[0]?.message?.content?.trim() || "";
+        // If rate-limited, wait and retry
+        if (response.status === 429) {
+            await new Promise(r => setTimeout(r, 1000));
+            continue;
+        }
+
+        // If other error, stop early
+        if (!response.ok) {
+            console.error("AI error:", response.status, await response.text());
+            return "";
+        }
+
+        const data = await response.json();
+        return data.choices?.[0]?.message?.content?.trim() || "";
+    }
+
+    // All retries failed
+    console.error("AI unavailable after retries");
+    return "";
 }
