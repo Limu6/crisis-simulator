@@ -1,0 +1,252 @@
+/* ------------------------------------------------------
+   GLOBAL THEME
+------------------------------------------------------ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: #0d1117;
+    color: #e6e6e6;
+}
+
+#app {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* ------------------------------------------------------
+   HEADER
+------------------------------------------------------ */
+#header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#header h1 {
+    font-size: 2.4rem;
+    margin: 0;
+    color: #58a6ff;
+}
+
+.subtitle {
+    margin-top: 6px;
+    font-size: 1.1rem;
+    color: #8b949e;
+}
+
+/* ------------------------------------------------------
+   CRISIS PANEL
+------------------------------------------------------ */
+#crisisPanel {
+    background: #161b22;
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: 0 0 18px rgba(0,0,0,0.4);
+}
+
+/* ------------------------------------------------------
+   STABILITY BAR
+------------------------------------------------------ */
+#stabilityContainer {
+    width: 100%;
+    height: 14px;
+    background: #222;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+#stabilityBar {
+    height: 100%;
+    width: 50%; /* starts centered */
+    transform-origin: center;
+    transition: width 0.3s ease, background 0.3s ease;
+    border-radius: 8px;
+}
+/* ------------------------------------------------------
+   CRISIS TEXT CARD
+------------------------------------------------------ */
+#crisisCard {
+    text-align: center;
+    background: #1c2128;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.35);
+}
+
+#crisisTitle {
+    margin: 0 0 10px 0;
+    color: #79c0ff;
+}
+
+#crisisText {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.45;
+}
+
+#crisisAnimation {
+    font-size: 1.1rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    min-height: 60px;
+}
+
+#crisisAnimation {
+    font-size: 1.1rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    min-height: 60px;
+}
+
+#crisisAnimation.active {
+    opacity: 1;
+}
+
+.animation-beat {
+    animation: fadeBeat 0.6s ease;
+}
+
+@keyframes fadeBeat {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#advisorPrompt {
+    text-align: center;
+    margin: 0;
+    font-size: 1.20rem;
+    line-height: 1.45;
+    color: #ff9999;
+}
+
+/* ------------------------------------------------------
+   DECISION GRID (2x2)
+------------------------------------------------------ */
+#decisionGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 24px;
+}
+
+/* Force hidden state */
+#decisionGrid.hidden {
+    display: none !important;
+}
+
+/* ------------------------------------------------------
+   DECISION TILES (BUTTONS)
+------------------------------------------------------ */
+button.decision {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    height: 220px;
+    width: 100%;
+
+    padding: 18px;
+    border: none;
+    border-radius: 14px;
+
+    cursor: pointer;
+    text-align: left;
+
+    box-shadow: 0 0 14px rgba(0,0,0,0.25);
+    transition: transform 0.15s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+button.decision h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+button.decision p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+button.decision:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 18px rgba(0,0,0,0.45);
+}
+
+/* ------------------------------------------------------
+   PASTEL DECISION COLORS
+------------------------------------------------------ */
+button.aggressive {
+    background: linear-gradient(135deg, #ffd6d6, #ffb3b3);
+    color: #5a1a1a;
+}
+button.aggressive:hover {
+    background: linear-gradient(135deg, #ffb3b3, #ff9999);
+}
+
+button.diplomatic {
+    background: linear-gradient(135deg, #d6e8ff, #b3d4ff);
+    color: #0f2a4d;
+}
+button.diplomatic:hover {
+    background: linear-gradient(135deg, #b3d4ff, #99c4ff);
+}
+
+button.investigative {
+    background: linear-gradient(135deg, #d6ffe6, #b3ffd1);
+    color: #0f3d24;
+}
+button.investigative:hover {
+    background: linear-gradient(135deg, #b3ffd1, #99ffc2);
+}
+
+button.delay {
+    background: linear-gradient(135deg, #fff1cc, #ffe6a3);
+    color: #4d3a00;
+}
+button.delay:hover {
+    background: linear-gradient(135deg, #ffe6a3, #ffdb80);
+}
+
+/* ------------------------------------------------------
+   PASTEL START / CONTINUE BUTTON
+------------------------------------------------------ */
+#continueBtn {
+    margin-top: 24px;
+    width: 100%;
+    padding: 16px;
+
+    background: linear-gradient(135deg, #d6ffe6, #b3ffd1);
+    color: #0f3d24;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 1.15rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+#continueBtn:hover {
+    background: linear-gradient(135deg, #b3ffd1, #99ffc2);
+    transform: scale(1.02);
+}
+
+/* ------------------------------------------------------
+   UTILITY
+------------------------------------------------------ */
+.hidden {
+    display: none;
+}
