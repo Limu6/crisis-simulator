@@ -2,7 +2,7 @@ import { playCrisisAnimation } from "./animation.js";
 // ------------------------------------------------------
 // GLOBAL CONFIG
 // ------------------------------------------------------
-const GROQ_API_KEY = "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";
+const GROQ_API_KEY = "GROQ_API_KEY";
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
 const GROQ_MODEL = "llama-3.3-70b-versatile";
 
