@@ -93,6 +93,7 @@ Rules:
 - Each explanation must include one potential advantage AND one potential risk.
 - Keep the tone analytical and balanced.
 - No probabilities, numbers, or internal mechanics.
+- Use 200-280 characters.
 
 JSON ONLY:
 {
